@@ -1,0 +1,9 @@
+id,name,short_name,tokens_per_sec,decode_tokens_per_sec,speedup,decode_speedup,ttft_ms,tpot_ms,target_forward_passes,acceptance_rate_pct,mean_accepted_per_step,draft_time_ms,verify_time_ms,cache_overhead_ms,target_kv_actual_mb,draft_kv_actual_mb,kv_cache_actual_mb,kv_cache_uncompressed_mb,compression_ratio,kv_memory_saved_pct,peak_memory_mb,avg_power_watts,energy_per_token_j,energy_saved_pct,co2_g_per_1k_tokens,perplexity,token_similarity_f1,power_sensor_source
+baseline,1. Baseline (Qwen2.5-7B Standard KV),"Baseline
+(Standard KV)",31.71,34.35,1.0,1.0,139.52,39.11,40.0,0.0,1.0,0.0,39.11,0.032,0.4296,0.0,0.4296,0.4296,1.0,0.0,251.48,44.72,1.8888,0.0,0.24921,523.2547,1.0,tdp_calibrated_model
+adaptive_kv,2. Adaptive KV-Cache Only (Pruning + INT4),"Adaptive KV
+Only",36.41,39.38,1.15,1.15,108.2,25.4,40.0,0.0,1.0,0.0,25.4,0.529,0.0625,0.0,0.0625,0.4296,6.87,85.45,235.67,44.56,1.2294,34.91,0.16222,524.5658,0.0375,tdp_calibrated_model
+speculative_only,3. Speculative Decoding Only (0.5B -> 7B),"Speculative
+Only",64.16,78.66,2.02,2.29,130.37,12.98,12.5,53.0,3.49,19.89,27.91,0.003,0.4316,0.0591,0.4907,0.4907,1.0,0.0,239.3,44.12,0.7054,62.65,0.09308,523.2547,1.0,tdp_calibrated_model
+combined_proposed,4. Proposed Combined (Speculative + Adaptive KV),"Proposed
+(Spec + AdaptKV)",12.71,13.26,0.4,0.39,199.93,75.76,26.0,12.9,1.6,47.64,71.37,1.573,0.0625,0.0591,0.1216,0.4887,4.02,75.12,234.14,44.84,3.5421,-87.53,0.46735,524.5658,0.0875,tdp_calibrated_model
